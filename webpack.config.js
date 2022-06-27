@@ -24,13 +24,13 @@ module.exports = {
     // loader 加载器 配置在这儿
     rules: [
       // loader的规则
-        {
-          test: /\.css$/, // 匹配所有的css文件
-          // loader 执行的顺序： use数组里从右向左运行
-          // 先用 css-loader 让webpack能够识别 css 文件的内容并打包
-          // 再用 style-loader 将样式, 把css插入到dom中
-          use: ['style-loader', 'css-loader'],
-        },
+      {
+        test: /\.css$/, // 匹配所有的css文件
+        // loader 执行的顺序： use数组里从右向左运行
+        // 先用 css-loader 让webpack能够识别 css 文件的内容并打包
+        // 再用 style-loader 将样式, 把css插入到dom中
+        use: ['style-loader', 'css-loader'],
+      },
       {
         test: /\.less$/, // 匹配执行类型的文件
         // 使用less-loader, 让webpack处理less文件, 内置还会用less翻译less代码成css内容
@@ -48,6 +48,24 @@ module.exports = {
             // 配置limit, 超过8k, 不转, file-loader复制, 随机名, 输出文件
             options: {
               limit: 8 * 1024,
+            },
+          },
+        ],
+      },
+      {
+        // 处理字体图标的解析
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 2 * 1024,
+              //小于这个 转换成based64
+              //大于 直接复制 file-loader
+              // 配置输出的文件名
+              name: '[name].[ext]',
+              // 配置输出的文件目录
+              outputPath: 'fonts/',
             },
           },
         ],

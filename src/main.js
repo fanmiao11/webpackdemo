@@ -18,3 +18,5 @@ let img = document.createElement('img');
 img.src = imgUrl;
 document.body.appendChild(img);
 
+// 引入字体图标文件
+import './assets/fonts/iconfont.css'
