@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // 可以自动删除webpack目录下的dist文件
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
+const { VueLoaderPlugin } = require('vue-loader');
+
 module.exports = {
   mode: 'development',
   entry: './src/main.js', // 入口
@@ -18,7 +20,9 @@ module.exports = {
       filename: 'index.html', // 生成文件的名称
     }),
 
-    // new CleanWebpackPlugin(), // 删除的是output path 里配置的那个输出文件的文件夹
+    new CleanWebpackPlugin(), // 删除的是output path 里配置的那个输出文件的文件夹
+
+    new VueLoaderPlugin(),
   ],
   module: {
     // loader 加载器 配置在这儿
@@ -79,6 +83,11 @@ module.exports = {
             presets: ['@babel/preset-env'], // 预设:转码规则(用bable开发环境本来预设的)
           },
         },
+      },
+
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
       },
     ],
   },

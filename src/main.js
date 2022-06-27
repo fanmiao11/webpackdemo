@@ -27,3 +27,5 @@ document.body.appendChild(img1);
 // 引入字体图标文件
 import './assets/fonts/iconfont.css'
 
+import './app.vue'
+
