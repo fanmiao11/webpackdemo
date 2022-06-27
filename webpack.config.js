@@ -1,10 +1,11 @@
 const path = require('path');
 // 引入自动生成 html 的插件
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 // 可以自动删除webpack目录下的dist文件
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
+  mode: 'development' ,
   entry: './src/main.js', // 入口
   output: {
     path: path.resolve(__dirname, 'dist'), // 出口路径 绝对路径
